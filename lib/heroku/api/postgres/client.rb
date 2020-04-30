@@ -1,8 +1,8 @@
 module Heroku
   module Api
     module Postgres
-      def self.connect_oauth(oauth_client_key = ENV['HEROKU_OAUTH_TOKEN'])
-        Client.new(oauth_client_key)
+      def self.connect_oauth(oauth_client_key = ENV['HEROKU_OAUTH_TOKEN'], pro_plan = false)
+        Client.new(oauth_client_key, pro_plan)
       end
 
       class Client
