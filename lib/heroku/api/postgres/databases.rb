@@ -29,6 +29,10 @@ module Heroku
           @client.perform_get_request("/client/v11/databases/#{database_id}")
         end
 
+        def unfollow(database_id)
+          @client.perform_put_request("/client/v11/databases/#{database_id}/unfollow")
+        end
+
         def host_for(database)
           starter_plan?(database) ? STARTER_HOST : PRO_HOST
         end

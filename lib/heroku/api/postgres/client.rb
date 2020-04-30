@@ -38,6 +38,15 @@ module Heroku
           parse_response(response)
         end
 
+        def perform_put_request(path, params = {}, options = {})
+          url = build_uri(path, options)
+          req = Net::HTTP::Put.new(url)
+          add_auth_headers(req)
+          req.body = params.to_json
+          response = start_request(req, url)
+          parse_response(response)
+        end
+
         private
 
         def build_uri(path, host: @basic_url)
