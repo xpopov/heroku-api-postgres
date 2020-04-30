@@ -8,9 +8,9 @@ module Heroku
       class Client
         attr_reader :oauth_client_key
 
-        def initialize(oauth_client_key)
+        def initialize(oauth_client_key, pro_plan = false)
           @oauth_client_key = oauth_client_key
-          @basic_url = Databases::STARTER_HOST
+          @basic_url = pro_plan ? Databases::PRO_HOST : Databases::STARTER_HOST
         end
 
         def backups
